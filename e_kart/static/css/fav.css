@@ -1,0 +1,76 @@
+body {
+    background-color: rgb(224, 217, 217);
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align items at the top for a sticky effect */
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.left {
+    flex: 25%;
+    height: 600px;
+    
+    position: sticky; /* Make it sticky */
+    top: 0; /* Stick to the top when scrolling */
+    align-self: flex-start; /* Ensure it doesn't stretch */
+}
+
+.profile {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    width: 400px;
+    height: 100px;
+    background-color: white;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 20px;
+}
+.pic{
+    width: 70px;
+    height: 70px;
+    background: #000;
+    border-radius:50%;
+    margin-left: 10px;
+}
+.right {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin-left: 10px;
+    flex: 70%;
+    height: auto;
+    background-color: white;
+}
+
+.image {
+    width: 120px;
+    height: 120px;
+}
+
+.image img {
+    width: 100%;
+    height: 100%;
+}
+
+.content {
+    margin-left: 10px;
+    width: 80%;
+    height: 120px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.inner {
+    display: flex;
+}
+.remove{
+    background-color: transparent;
+    border: none;
+    color: gray;
+}
+.remove:hover{
+    color: red;
+}
+

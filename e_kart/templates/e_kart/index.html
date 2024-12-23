@@ -1,0 +1,98 @@
+{% extends 'e_kart/layout/base.html'%}
+
+{% load static%}
+
+{% block extra_css%}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock extra_css%}
+
+{% block title %}
+    E-Mart | Home
+{% endblock title%}
+
+
+{% block content %}
+
+<section > 
+    <div class="row bg-white mx-2 mb-3">
+            {% for item in category%}
+                <div class="col">
+                    <div class="card mt-2 ">
+                        <a href="{% url 'ekart:collection' item.name %}" class="text-decoration-none">
+                        <img src="{{item.image.url}}" class="card-image-top" alt="Category">
+                
+                            <div class="card">
+                                <h5 class="text-center text-dark fs-6">{{item.name}}</h5>
+                            </div>
+                        </a>
+                    </div>
+               
+                </div>
+                {%endfor%}
+</div>
+ </section>
+    <!-- include slider -->
+{% include 'e_kart/includes/slider.html' %}
+
+    <section class=" trendings ">
+        <div class="container bg-light mt-3 ms-3 trending-cont">
+            <div class="row ">
+                <div class="col-12">
+                    <h4 class="mb-3 text-start h1 mt-2 text-dark fs-2">Trending</h4>
+                    <hr style="border-color:#b8bfc2;">
+                </div>
+
+                
+                    {%for product in products|slice:":7" %}
+                        {%if product.trending %}
+                        <div class="col ">
+                            <div class="cart trending">
+                            <a href="" class="text-decoration-none text-center text-dark fs-4">
+                                <img src="{{product.product_image.url}}" alt="">
+                                 <h5 class="mt-2">{{product.name}}</h5>
+                            </a>
+                        </div>
+                    </div>
+                        {%endif%}
+                    {% endfor %}
+            </div> 
+        </div>
+
+        <!-- Trending Banner Container -->
+  
+        <div class="row ms-1">
+            <div class="col-12">
+                <div class="trending-ban">
+                    <a href="">
+                        <img src="{% static 'images/spl1.webp' %}" alt="" class="img-fluid">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="ms-3 me-3">
+        <div class="off-cont">
+            <div class="col-4 bg-dark offer">
+                <a href="#"><img src="{% static 'images/bro1.webp' %}" alt=""></a>
+            </div>
+            <div class="col-4 bg-dark offer">
+                <a href="#"><img src="{% static 'images/bro2.webp' %}" alt=""></a>
+            </div>
+            <div class="col-4 bg-dark offer">
+                <a href="#"><img src="{% static 'images/bro3.webp' %}" alt=""></a>
+            </div>
+            <div class="col-4 bg-dark offer">
+                <a href="#"><img src="{% static 'images/bro4.webp' %}" alt=""></a>
+            </div>
+            <div class="col-4 bg-dark offer">
+                <a href="#"><img src="{% static 'images/bro5.webp' %}" alt=""></a>
+            </div>
+            <div class="col-4 bg-dark offer">
+                <a href="#"><img src="{% static 'images/bro6.webp' %}" alt=""></a>
+            </div>    
+        </div>
+    </section>
+
+{% endblock content%}
+    

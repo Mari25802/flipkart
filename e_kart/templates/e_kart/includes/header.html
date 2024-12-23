@@ -1,0 +1,70 @@
+{% load static %}
+
+{% block extra_css%}
+<link rel="stylesheet" href="{% static 'css/header.css' %}">
+{% endblock extra_css%}
+
+<header class=" text-white p-1">
+    <div class="row  ">
+        <div class="col ms-5">
+            <h1 class="logo"><a class="text-decoration-none text-white ms-5 " href="/">E-Mart</a></h1>
+        </div>
+
+<!-- search bar -->
+        <div class="col-md-4 col-12 mt-3 mt-md-2 input-box  ">
+            <div class="input-group input" id="input-group">
+                <input 
+                    class="form-control " 
+                    type="search" 
+                    placeholder="Search E-Mart product..." 
+                    style="font-size: 1rem;">
+                    <span class="input-group-text  border-0">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </span>
+            </div>
+        </div>
+
+<!-- nav  -->
+        <div class="col  mt-3 d-flex justify-content-center">
+            <nav >
+                <ul class="list-inline ">
+                    {% if request.user.is_authenticated %}
+
+                    <li class="list-inline-item">
+                       
+                        <!-- First Dropdown -->
+                        <div class="dropdown  d-inline-block me-5">
+                          <a class="text-decoration-none text-white dropdown-toggle" href="#" id="dropdownMenu1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa fa-user me-1"></i> {{request.user}}</a>
+                          <ul class="dropdown-menu mt-3 " aria-labelledby="dropdownMenu1">
+
+                            <li class=""><a class="dropdown-item" href="#"><i class="fa-regular fa-circle-user"></i> My Profile</a></li>
+            
+                            <li><a class="dropdown-item" href="{% url 'ekart:fav_view'%}"> <i class="fa-regular fa-heart"></i> Wishlist ({{fav | length}})</a></li>
+                              
+                            <li><a class="dropdown-item" href="{% url 'ekart:logout_page'%}"><i class="fa-solid fa-right-from-bracket"></i> LogOut</a></li>
+                          </ul>
+                        </div>
+                    </li>
+                    {% else %}
+                        <li class="list-inline-item " ><a class="text-decoration-none text-white" href="{% url 'ekart:register'%}"><i class="fa fa-users me-1"></i>Register</a></li>
+                        <li class="list-inline-item " ><a class="text-decoration-none text-white" href="{% url 'ekart:login'%}"><i class="fa fa-sign-in me-1"></i>Login</a></li>
+                    {% endif %}
+                    <li class="list-inline-item " ><a class="text-decoration-none text-white" href="{% url 'ekart:collection'%}">collection</a></li>
+                    <li class="list-inline-item "><a class="text-decoration-none text-white me-2" href="{% url 'ekart:cart_page'%}"><i class="fa fa-shopping-cart me-1"></i>Cart</a></li>
+
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<section>
+    <nav class="subnav bg-white">
+        <ul class="list-inline ms-5 my-auto mb-2 " >
+            {% for item in category%}
+            <li class="list-inline-item ms-5  text-uppercase custom-small "> <a href="{% url 'ekart:collection' item.name %}" class="text-decoration-none text-dark">{{item}}</a></li>
+            {% endfor %}
+        </ul>
+    </nav>
+</section>

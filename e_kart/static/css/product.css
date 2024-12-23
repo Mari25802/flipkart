@@ -1,0 +1,52 @@
+body{
+    background-color: rgb(224, 217, 217);
+   }
+   
+.card{
+    height: 450px;
+    width:280px;
+    background-color:white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.card img{
+    height:250px;
+    width:100%;
+}
+.old_price{
+    padding: 10px;
+    font-weight: bold;
+    color: red;
+}
+
+.new_price{
+    padding: 10px;
+    font-weight: bold;
+    color: green;
+}
+.desc{
+    font-size:16px;
+    color: rgb(98, 96, 96);
+}
+.pic-box{
+    position: relative;
+    
+}
+.hot{
+    background-color: orangered;
+    color: white;
+    text-align: center;
+    width: 50px;
+    font-weight: bold;
+    display: inline;
+    border-radius: 5px;
+    padding: 5px;
+    position: absolute;
+    top: 5px;
+    right:70px;
+    z-index:10;
+}
+.increment{
+    width: 100px;
+    height:30px;
+}

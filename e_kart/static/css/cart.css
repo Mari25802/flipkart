@@ -1,0 +1,128 @@
+body {
+    background-color: rgb(224, 217, 217);
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align items at the top for a sticky effect */
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.left {
+    flex: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px ;
+}
+.address{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height:100px;
+    background: white;
+}
+.address button{
+    width: 100px;
+    background-color:rgb(58, 58, 247);
+    color: white;
+    font-weight: bold;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+}
+.address button:hover{
+    background-color: white;
+    border: 1px solid blue;
+    color: rgb(58, 58, 247);
+}
+
+.title-left{
+    background: white;
+    height:70px;
+    margin-bottom: 5px;
+}
+
+.profile {
+    width: 400px;
+    height: 100px;
+    background-color: white;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 20px;
+}
+.pic{
+    width: 70px;
+    height: 70px;
+    background: #000;
+    border-radius:50%;
+    margin-left: 10px;
+}
+.right {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin-left: 10px;
+    flex: 30%;
+    height: auto;
+    background-color: white;
+}
+.image {
+    width: 120px;
+    height: 120px;
+    margin-top:2%;
+}
+
+.image img {
+    width: 100%;
+    height: 100%;
+}
+
+.content {
+    margin-left: 10px;
+    width: 80%;
+    height: 120px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.inner {
+    display: flex;
+    /* background-color: rgb(121, 13, 13); */
+    height: 150px;
+}
+.left-main{
+    background-color: white;
+}
+.remove{
+    background-color: transparent;
+    border: none;
+    color: gray;
+}
+.remove:hover{
+    color: red;
+}
+
+.price{
+    /* background-color: yellow; */
+    display: flex;
+    justify-content:space-between;
+    width: 160px;
+}
+
+.buttons{
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+}
+.buttons button{
+    height: 30px;
+}
+.buttons input{
+    height: 30px;
+}
+.increment{
+    width: 100px;
+    height: 20px;
+}

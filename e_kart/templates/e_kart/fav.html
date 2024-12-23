@@ -1,0 +1,62 @@
+{% extends 'e_kart/layout/base.html' %}
+{%load static%}
+
+{% block extra_css%}
+<link rel="stylesheet" href="{% static 'css/fav.css' %}">
+{% endblock extra_css%}
+
+{% block title %}
+My Wishlist
+{% endblock title%}
+
+{% block content%}
+
+<section>
+    <div class="container  main mt-3">
+        <div class="row  left">
+            <div class="col">
+                <div class="profile">
+                    <div class="pic">
+                    </div>
+                    <div class="msg">
+                    <p>Hello,</p>
+                    <h5>{{request.user}}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container right">
+            <div class="row">
+                <div class="col-12">
+                   <h4 class="mb-4 mt-1"> My Wishlist ({{fav|length}})</h4>
+                <hr style="border-color: #b8bfc2;" >
+                </div>
+                {%for item in fav %}
+                <div class="col-12 mb-3 inner">
+                    <div class="image " >
+                        <img src="{{item.product.product_image.url}}" alt="">
+                    </div>
+
+                    <div class="content ms-3">
+                        <div class="title">
+                            <p>{{item.product.name}}</p>
+                        <p><s>Rs. {{item.product.original_price | stringformat:'d'}}</s></p>
+                        <p class="h5">Rs. {{item.product.selling_price | stringformat:'d'}}</p>
+                        </div>
+                        <div class="btn">
+                            <a href="{% url 'ekart:remove_fav' item.id %}"><button class="remove"><i class="fa fa-trash"></i></button></a>
+                        </div>
+                    </div>
+                    
+                </div>
+                <hr style="border-color: #b8bfc2;">
+                {%endfor%}
+                
+            </div>
+        </div>
+
+    </div>
+
+</section>
+{%endblock content%}

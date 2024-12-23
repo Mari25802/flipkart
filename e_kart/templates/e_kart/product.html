@@ -1,0 +1,42 @@
+{% extends 'e_kart/layout/base.html' %}
+{% load static%}
+
+<!-- Added css here -->
+{% block extra_css%}
+<link rel="stylesheet" href="{% static 'css/product.css' %}">
+{% endblock extra_css%}
+
+
+{% block title %}
+    E-Mart | Home
+{% endblock title%}
+
+{% block content%}
+
+    <section class="bg-light ms-2 me-2">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h4 class="mt-3" >{{category_name}} Products</h4>
+                    <hr style="border-color: #b8bfc2;">
+                </div>
+
+                {% for product in products %}
+                <div class="col-md-4 col-lg-3">
+                    <div class="card mt-3">
+                       <a href="{% url 'ekart:product_details' category_name product.name %}" class="text-decoration-none">
+                        <img src="{{product.product_image.url}}" class="card-image-top p-2" alt="{{product.name}}" style="border-radius: 10px;">
+                        <div class="cart-body">
+                            <h5 class="mt-2 ms-3">{{product.name}}</h5>
+                            <p class="ms-3 desc ">{{product.description}}</p>
+                            <span class="float-start new_price"><p class="ms-3">Rs.{{product.selling_price| stringformat:'d'}}</p></span>
+                            <span class="float-start old_price"><p class="ms-3"><s>Rs.{{product.original_price | stringformat:'d'}}</s></p></span>
+                        </div>
+                       </a>
+                    </div>
+                </div>
+                {%endfor%}
+            </div>
+        </div>
+    </section>
+{% endblock content%}
