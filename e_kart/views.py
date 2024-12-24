@@ -49,7 +49,7 @@ def logout_page(request):
         logout(request)
         messages.success(request,"Logged out Successfully")
         return redirect('/')
-        
+
 def collection(request):
     fav=Favourite.objects.filter(user=request.user)
     category=Category.objects.filter(status=0)
@@ -57,22 +57,22 @@ def collection(request):
 
 def collectionview(request,name):  
     category=Category.objects.filter(status=0)
-    fav=Favourite.objects.filter(user=request.user)
+    # fav=Favourite.objects.filter(user=request.user)
     
     if(Category.objects.filter(name=name ,status=0)):
         products=Products.objects.filter(category__name=name)
-        return render(request,'e_kart/product.html',{"products":products , "category_name":name,"category":category,"fav":fav})
+        return render(request,'e_kart/product.html',{"products":products , "category_name":name,"category":category,})
     else:
         messages.warning(request,'No such category found')
         return redirect('collection')
 
 def product_details(request,cname,pname):
-    fav=Favourite.objects.filter(user=request.user)
+    # fav=Favourite.objects.filter(user=request.user)
     category=Category.objects.filter(status=0)
     if(Category.objects.filter(name=cname , status=0)):
         if(Products.objects.filter(name=pname, status=0)):
             product=Products.objects.filter(name=pname, status=0).first()
-            return render(request, 'e_kart/product_details.html',{"product":product,"category":category,"fav":fav})
+            return render(request, 'e_kart/product_details.html',{"product":product,"category":category})
         else:
             messages.warning(request,'No such category found')
             return redirect('collection')  
@@ -104,7 +104,7 @@ def cart(request):
             data=json.load(request)
             product_id=data['product_id']
             product_qty=data['product_qty']
-            print(request.user.id)
+            # print(request.user.id)
             product_status=Products.objects.get(id=product_id)
             if product_status:
                 if Cart.objects.filter(user=request.user.id, product_id=product_id):
@@ -124,11 +124,11 @@ def cart(request):
 # cart_page
 def cart_page(request):
     category=Category.objects.filter(status=0)
-    fav=Favourite.objects.filter(user=request.user)
+    # fav=Favourite.objects.filter(user=request.user)
 
     if request.user.is_authenticated:
         cart=Cart.objects.filter(user=request.user)
-        return render(request,'e_kart/cart.html',{"cart":cart,"category":category,"fav":fav})
+        return render(request,'e_kart/cart.html',{"cart":cart,"category":category})
     else:
         return redirect('/')
 

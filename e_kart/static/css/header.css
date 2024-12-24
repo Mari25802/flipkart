@@ -11,7 +11,13 @@ header{
   background-color: aliceblue;
   border-radius: 10px;
   margin-left:-230px;
-
+}
+.input input{
+  border: none;
+}
+.input span{
+  background-color: white;
+  border: none;
 }
 
 .dropdown-menu li{
