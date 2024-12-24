@@ -16,5 +16,7 @@ urlpatterns=[
     path('fav_view', views.fav_view, name="fav_view"),
     path('collection', views.collection, name="collection"),
     path('collection/<str:name>', views.collectionview, name="collection"),
-    path('collection/<str:cname>/<str:pname>', views.product_details, name="product_details")
+    path('collection/<str:cname>/<str:pname>', views.product_details, name="product_details"),
+    # path('<str:category_name>/', views.product_list, name='product_list'),
+    # path('<str:category_name>/<str:product_name>/', views.product_details, name='product_details'),
 ]

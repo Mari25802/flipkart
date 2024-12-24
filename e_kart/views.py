@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404 
 from django.http import JsonResponse
 from .models import *
 from django.contrib import messages
@@ -150,3 +150,23 @@ def remove_fav(request,fid):
     favitem=Favourite.objects.get(id=fid)
     favitem.delete()
     return redirect('/fav_view')
+
+def product_list(request, category_name):
+    # Fetch the category by name
+    category = get_object_or_404(Category, name=category_name)
+
+    # Filter products belonging to the category
+    products = Products.objects.filter(category=category)
+
+    # Sorting products based on query parameters
+    sort_option = request.GET.get('sort', '')
+    if sort_option == 'high-to-low':
+        products = products.order_by('-selling_price')
+    elif sort_option == 'low-to-high':
+        products = products.order_by('selling_price')
+
+    # Render the product list template
+    return render(request, 'e_kart/product_list.html', {
+        'category_name': category_name,
+        'products': products,
+    })
